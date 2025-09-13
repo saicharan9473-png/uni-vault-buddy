@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { AlertTriangle, CheckCircle } from "lucide-react";
+import { formatINR } from "@/lib/utils";
 
 interface BudgetOverviewProps {
   expenses: number;
@@ -40,7 +41,7 @@ export const BudgetOverview = ({ expenses }: BudgetOverviewProps) => {
                     )}
                   </div>
                   <span className="text-sm text-muted-foreground">
-                    ${item.spent.toFixed(0)} / ${item.budget}
+                    {formatINR(item.spent).replace('.00', '')} / {formatINR(item.budget).replace('.00', '')}
                   </span>
                 </div>
                 
@@ -66,7 +67,7 @@ export const BudgetOverview = ({ expenses }: BudgetOverviewProps) => {
                     {percentage.toFixed(0)}% used
                   </span>
                   <span className="text-success">
-                    ${Math.max(item.budget - item.spent, 0).toFixed(0)} left
+                    {formatINR(Math.max(item.budget - item.spent, 0)).replace('.00', '')} left
                   </span>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight, ArrowDownRight } from "lucide-react";
+import { formatINR } from "@/lib/utils";
 
 interface Transaction {
   id: string;
@@ -74,7 +75,7 @@ export const ExpenseList = ({ transactions }: ExpenseListProps) => {
                   <span className={`font-semibold ${
                     transaction.type === 'income' ? 'text-success' : 'text-destructive'
                   }`}>
-                    {transaction.type === 'income' ? '+' : '-'}${transaction.amount.toFixed(2)}
+                    {transaction.type === 'income' ? '+' : '-'}{formatINR(transaction.amount).replace('₹', '')}
                   </span>
                 </div>
               </div>

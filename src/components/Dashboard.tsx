@@ -6,6 +6,7 @@ import { ExpenseForm } from "./ExpenseForm";
 import { ExpenseList } from "./ExpenseList";
 import { BudgetOverview } from "./BudgetOverview";
 import { SpendingChart } from "./SpendingChart";
+import { formatINR } from "@/lib/utils";
 
 interface Transaction {
   id: string;
@@ -79,7 +80,7 @@ const Dashboard = () => {
               <Wallet className="h-4 w-4 text-primary" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-primary">${balance.toFixed(2)}</div>
+              <div className="text-2xl font-bold text-primary">{formatINR(balance)}</div>
               <p className="text-xs text-muted-foreground">
                 Current available balance
               </p>
@@ -92,7 +93,7 @@ const Dashboard = () => {
               <TrendingUp className="h-4 w-4 text-success" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-success">${totalIncome.toFixed(2)}</div>
+              <div className="text-2xl font-bold text-success">{formatINR(totalIncome)}</div>
               <p className="text-xs text-muted-foreground">
                 This month's income
               </p>
@@ -105,7 +106,7 @@ const Dashboard = () => {
               <TrendingDown className="h-4 w-4 text-destructive" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-destructive">${totalExpenses.toFixed(2)}</div>
+              <div className="text-2xl font-bold text-destructive">{formatINR(totalExpenses)}</div>
               <p className="text-xs text-muted-foreground">
                 This month's spending
               </p>

@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
+import { formatINR } from "@/lib/utils";
 
 interface Transaction {
   id: string;
@@ -58,7 +59,7 @@ export const SpendingChart = ({ transactions }: SpendingChartProps) => {
         <div className="bg-card border rounded-lg p-3 shadow-lg">
           <p className="font-medium">{payload[0].name}</p>
           <p className="text-sm text-muted-foreground">
-            ${payload[0].value.toFixed(2)}
+            {formatINR(payload[0].value)}
           </p>
         </div>
       );
